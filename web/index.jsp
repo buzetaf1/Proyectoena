@@ -10,8 +10,12 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+         <link rel="stylesheet" type="text/css" href="./css/ena.css">
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Bienvenido</h1>
+        <form method="get" action="login.jsp" >
+            <input type="submit" value="logear" name ="btn_login">      
+        </form>
     </body>
 </html>

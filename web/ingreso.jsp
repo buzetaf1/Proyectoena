@@ -4,6 +4,8 @@
     Author     : Carlos
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="Ena.modelo.Gerencia"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -14,18 +16,19 @@
         <script>
             function enviar(){
                 var frm = document.getElementById('form1');
-                //var sel = document.getElementById('gerencia');
+                var sel = document.getElementById('gerencia');
                 frm.submit();
             }
         </script>
     </head>
     <body>
+       
         <h1>Ingreso</h1>
          <div class="formulario">
               <div class="cabecera">
                     Ingresar Requerimiento
                 </div>
-            <form action="ComboGerencia" method="post" id="form1">
+            <form action="inicioservlet" method="post" id="form1">
                 <div class="input_text">
                     Gerencia: 
                     <%
@@ -48,9 +51,21 @@
                     Asignar a:<br>
                     Encargado:<br>
                     Requerimiento:<br>
-                    [Guardar] [Volver al Menu]
+                    
                 </div>
             </form>
+                  
+            <form method="post" action="combogerencia" >
+            <div class="input_text">   
+                <input type="submit" value="Guardar" name ="btn_guardar">      
+            </form>
+                  
+            <form method="get" action="menu.jsp" >
+              
+                <input type="submit" value="Volver a menu" name ="btn_menu">      
+            </form>
+                  
+            </div>
          </div>
     </body>
 </html>

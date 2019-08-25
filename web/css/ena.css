@@ -1,0 +1,49 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 24-08-2019, 21:49:49
+    Author     : Carlos
+*/
+.formulario{
+    width: 350px;
+    height: 150px;
+    margin: auto;
+    border:3px solid #aaa;
+}
+
+.cabecera{
+    font-size: 16px;
+    border:1px solid #ccc;
+}
+
+.input_text{
+    padding: 10px;
+    text-align: center;
+}
+.checkbox{
+    text-align: center;
+}
+.btn_enviar{
+    text-align: center;
+    position: relative;
+    
+}
+.btn_login{
+    text-align: center;
+    position: relative;
+    
+}
+
+.btn_menu{
+    text-align: center;
+    position: relative;
+    
+}
+
+.btn_guardar{
+    text-align: center;
+    position: relative;
+  }  

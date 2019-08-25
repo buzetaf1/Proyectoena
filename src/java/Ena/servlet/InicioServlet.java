@@ -6,9 +6,12 @@
 package Ena.servlet;
 
 import Ena.modelo.Consultas;
+import Ena.modelo.Gerencia;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -21,8 +24,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Carlos
  */
-@WebServlet(name = "Validacion", urlPatterns = {"/Autenticacion"})
-public class Validacion extends HttpServlet {
+@WebServlet(name = "InicioServlet", urlPatterns = {"/inicioservlet"})
+public class InicioServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,21 +38,11 @@ public class Validacion extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
-        response.setContentType("text/html;charset=UTF-8");
+       
+        ArrayList<Gerencia> listaGerencia = llenarComboGerencia();
+        request.setAttribute("listaG", listaGerencia);
         
-        String usuario=request.getParameter("usuario");
-        String pass=request.getParameter("pass");
-        
-        Consultas con= new Consultas();
-        
-        if(con.Autenticacion(usuario, pass)){
-            response.sendRedirect("menu.jsp");
-        }
-        else{
-            
-            response.sendRedirect("login.jsp");
-        }
-        
+        request.getRequestDispatcher("ingreso.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -63,11 +56,11 @@ public class Validacion extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException{
+            throws ServletException, IOException {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(Validacion.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(InicioServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -85,7 +78,7 @@ public class Validacion extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(Validacion.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(InicioServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -99,4 +92,21 @@ public class Validacion extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
+    private ArrayList<Gerencia> llenarComboGerencia() throws SQLException {
+        ArrayList<Gerencia> gerencias = new ArrayList<Gerencia>();
+        //Gerencia g = new Gerencia();
+        Consultas con= new Consultas();
+        ResultSet rs = con.Get_Gerencia();
+        while (rs.next()){
+             Gerencia g = new Gerencia();
+            g.setId(rs.getInt("id"));
+            g.setNombre(rs.getString("Nombre"));
+            
+           // g.setId(1);
+           // g.setNombre("Ventas");
+            gerencias.add(g);
+        }
+        return gerencias;
+    }
 }
+

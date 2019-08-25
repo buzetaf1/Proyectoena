@@ -4,9 +4,25 @@
         <servlet-name>Validacion</servlet-name>
         <servlet-class>Ena.servlet.Validacion</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ComboGerencia</servlet-name>
+        <servlet-class>Ena.servlet.ComboGerencia</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>InicioServlet</servlet-name>
+        <servlet-class>Ena.servlet.InicioServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Validacion</servlet-name>
         <url-pattern>/Autenticacion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ComboGerencia</servlet-name>
+        <url-pattern>/combogerencia</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InicioServlet</servlet-name>
+        <url-pattern>/inicioservlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
